@@ -1,0 +1,5 @@
+# Script Build Folder
+releases/
+local-cache/
+lab/
+tmp/
