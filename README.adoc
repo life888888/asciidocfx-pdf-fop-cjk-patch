@@ -1,0 +1,231 @@
+= asciidocfx-pdf-fop-cjk-patch
+:experimental:
+ifdef::env-github[]
+:toc:
+:toc-placement: preamble
+endif::[]
+ifndef::env-github[]
+:toc:
+:toc-placement: left
+endif::[]
+:imagesdir: images
+:source-highlighter: pygments
+:pygments-linenums-mode: inline
+//:pygments-linenums-mode: tablel
+:project-version: 0.0.1
+:project-name: asciidocfx-pdf-fop-cjk-patch
+:download-root: https://github.com/life888888/asciidocfx-pdf-fop-cjk-patch/releases/download/v{project-version}/
+
+AsciidocFX PDF Engine - FOP 轉換 PDF，預設設定，中文日文韓文字型((Noto Sans CJK，Noto Sans Mono CJK，Noto Serif CJK 包含4種樣式(Regular,Italic,Bold,BoldItalic))自動下載跟開箱即用。
+
+.設定前 - 中文字元不能正常顯示，全部顯示為`#`。套用的是預設的字型。
+image:BeforePatch.png[]
+
+.安裝設定後 - 中文字元正常顯示，粗體 bold, 斜體italic, 粗斜體　bold italic 全部都能正常顯示。
+image:AfterPatch.png[]
+
+== 簡介
+
+https://github.com/asciidocfx/AsciidocFX/issues[AsciidocFX issues] 上針對匯出包含中文字元內容為 PDF 最常見問題就是以下幾個:
+
+* https://github.com/asciidocfx/AsciidocFX/issues/138[Chinese characters are not displayed in exported PDF files #138]
+* https://github.com/asciidocfx/AsciidocFX/issues/146[Chinese fonts in generated PDF #146]
+* https://github.com/asciidocfx/AsciidocFX/issues/287[Level2,3....title display chinese as "#" while saveing as pdf #287]
+* https://github.com/asciidocfx/AsciidocFX/issues/512[How to export PDF with chinese fonts #512]
+* https://github.com/asciidocfx/AsciidocFX/issues/534[.adoc to pdf with 3rd header is# in Chinese #534]
+* https://github.com/asciidocfx/AsciidocFX/issues/554[Chinese cannot be displayed normally after windows11 saves pdf files #554]
+* https://github.com/asciidocfx/AsciidocFX/issues/378[How to adjust the font-weight? #378]
+
+以下將提供最簡單的自動化中文日文韓文字型自動下載跟開箱即用。
+
+== 如何安裝 asciidocfx-pdf-fop-cjk-patch
+
+=== 下載
+請下載 https://github.com/life888888/asciidocfx-pdf-fop-cjk-patch/archive/refs/tags/v0.0.1.zip[asciidocfx-pdf-fop-cjk-patch-0.0.1.zip] 或 https://github.com/life888888/asciidocfx-pdf-fop-cjk-patch/archive/refs/tags/v0.0.1.tar.gz[asciidocfx-pdf-fop-cjk-patch-0.0.1.tar.gz]
+
+=== 解壓縮並放置到AsciidocFX目錄下
+
+解壓縮 asciidocfx-pdf-fop-cjk-patch-0.0.1.zip 或 asciidocfx-pdf-fop-cjk-patch-0.0.1.tar.gz
+將目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1 放置到AsciidocFX目錄下。
+
+=== 自動安裝設定
+
+[IMPORTANT] 
+.注意以下參數中的 `tc` 請換成對應你要使用的語言代碼。
+==== 
+以下參數中的 `tc` 請換成對應你要使用的語言代碼。
+
+FONT LANGUAGE CODE:
+
+* **sc** (Simplified Chinese)
+* **tc** (Traditional Chinese)
+* **hk** (Hong Kong)
+* **jp** (Japanese)
+* **kr** (Korean)
+====
+
+
+==== Install on Linux
+
+只需要執行以下指令就能下載字型並且完成設定。
+
+[source,bash]
+----
+cd AsciidocFX/asciidocfx-pdf-fop-cjk-patch-0.0.1
+
+./install-asciidocfx-pdf-fop-cjk-patch.sh tc
+----
+
+
+
+==== Install on Windows 10+
+
+只需要執行以下指令就能下載字型並且完成設定。
+
+[source,bash]
+----
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+cd AsciidocFX\asciidocfx-pdf-fop-cjk-patch-0.0.1
+
+.\install-asciidocfx-pdf-fop-cjk-patch.ps1 tc
+----
+
+你的 AsciidocFX 的 FOP PDF Engine 已經可以正常匯出包含有中文日文韓文字元的PDF檔案。
+
+刪除 AsciidocFX 下的安裝目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1。
+
+=== 手動安裝
+
+如果你的系統不是 Linux 或 Windows，需要手動安裝的話，以下將說明手動安裝步驟。
+
+[source,bash]
+.目錄結構
+----
+└── AsciidocFX
+    ├── asciidocfx-pdf-fop-cjk-patch-0.0.1
+    │   ├── fo-pdf.xsl.hk
+    │   ├── fo-pdf.xsl.jp
+    │   ├── fo-pdf.xsl.kr
+    │   ├── fo-pdf.xsl.sc
+    │   ├── fo-pdf.xsl.tc
+    │   ├── fop.xconf.xml
+    │   ├── install-asciidocfx-pdf-fop-cjk-patch.ps1
+    │   ├── install-asciidocfx-pdf-fop-cjk-patch.sh
+    │   └── LICENSE
+    └── conf
+        ├── docbook-config
+        │   ├── fo-pdf.xsl
+        │   ├── fo-pdf.xsl.org.bak
+        │   ├── fop.xconf.xml
+        │   └── fop.xconf.xml.org.bak
+        └── fonts
+            └── NotoCJK
+                ├── NotoSansCJKtc-BoldItalic.ttf
+                ├── NotoSansCJKtc-Bold.ttf
+                ├── NotoSansCJKtc-Italic.ttf
+                ├── NotoSansCJKtc-Regular.ttf
+                ├── NotoSansMonoCJKtc-BoldItalic.ttf
+                ├── NotoSansMonoCJKtc-Bold.ttf
+                ├── NotoSansMonoCJKtc-Italic.ttf
+                ├── NotoSansMonoCJKtc-Regular.ttf
+                ├── NotoSerifCJKtc-BoldItalic.ttf
+                ├── NotoSerifCJKtc-Bold.ttf
+                ├── NotoSerifCJKtc-Italic.ttf
+                └── NotoSerifCJKtc-Regular.ttf
+----
+
+Step 1: 建立子目錄NotoCJK放置字型。
+       在 AsciidocFX / conf / fonts 目錄之下，建立子目錄 NotoCJK 。
+
+Step 2: 下載 NotoCJK 字型TTF檔到 AsciidocFX / conf / fonts / NotoCJK 目錄之下。
+      (Noto Sans CJK，Noto Sans Mono CJK，Noto Serif CJK)包含4種樣式(Regular,Italic,Bold,BoldItalic) 共12個ttf檔案。
+      請根據你的語言下載。
+      https://github.com/life888888/cjk-fonts-ttf#download-fonts[下載字型]
+      下載完成的目錄結構會類似上面。NotoCJK 目錄之下會有 NotoSansCJK*.ttf, NotoSansMonoCJK*.ttf, NotoSerifCJK*.ttf 共12個字型檔案。
+
+Step 3: 備份設定檔案 fo-pdf.xsl 及 fop.xconf.xml
+        進入 AsciidocFX / conf / docbook-config 目錄
+        將 fo-pdf.xsl    更名為 fo-pdf.xsl.org.bak
+        將 fop.xconf.xml 更名為 fop.xconf.xml.org.bak
+
+Step 4: 複製設定檔 fop.xconf.xml
+        複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fop.xconf.xml
+        到   AsciidocFX / conf / docbook-config 目錄下
+
+Step 5: 複製設定檔 fo-pdf.xsl.xx
+        複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fo-pdf.xsl.tc
+        到   AsciidocFX / conf / docbook-config 目錄下
+        並且更名為 fo-pdf.xsl
+
+[IMPORTANT] 
+.注意上述說明的 `xx` 請換成對應你要使用的語言代碼。
+==== 
+以下參數中的 `xx` 請換成對應你要使用的語言代碼。
+
+EX: `fo-pdf.xsl.tc` 或 `fo-pdf.xsl.sc`
+
+FONT LANGUAGE CODE:
+
+* **sc** (Simplified Chinese)
+* **tc** (Traditional Chinese)
+* **hk** (Hong Kong)
+* **jp** (Japanese)
+* **kr** (Korean)
+====
+
+Step 6: 刪除安裝目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1。
+
+至此完成設定，你的 AsciidocFX FOP PDF Engine 已經可以正確的匯出包含CJK字元的PDF檔案了。
+
+=== 修改的檔案內容
+
+[,xml,linenums,highlight=2]
+.fop.xconf.xml
+----
+include::fop.xconf.xml[lines=88..91]
+----
+
+
+
+[,xml,linenums]
+.fo-pdf.xsl
+----
+include::fo-pdf.xsl.tc[lines=26..38;56..83]
+----
+
+
+
+== 設定 AsciidocFX PDF Engine 為 FOP
+AsciidocFX 1.7.6 以後 PDF Engine 預設是 ASCIIDOCTOR (Asciidoctor PDF)。而不是 FOP。
+
+但是你仍然可以將 AsciidocFX PDF Engine 設定為使用 FOP。
+
+
+，， FOP。
+
+ 
+
+image:PDFSetting-001.png[]
+
+① 點選 AsciidocFX視窗右側頁籤的 `Settings`。
+
+② 點選 上面的頁籤的 `PDF Settings`。
+
+③ 點選  `PDF Converter` / `PDF Engine` 下拉選單。
+
+
+下拉選單 點選 `FOP`。
+
+.Drop-down menu, click on the `FOP` option
+image:PDFSetting-002.png[]
+
+點選 按鈕 `Save`。 點選　按鈕 `Load`。
+
+.Click Done and click `Save`. Then click `Load`.
+image:PDFSetting-003.png[]
+
+== License
+
+MIT 
+
