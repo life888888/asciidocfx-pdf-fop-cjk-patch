@@ -134,27 +134,32 @@ cd AsciidocFX\asciidocfx-pdf-fop-cjk-patch-0.0.1
 ----
 
 Step 1: 建立子目錄NotoCJK放置字型。
-       在 AsciidocFX / conf / fonts 目錄之下，建立子目錄 NotoCJK 。
+
+* 在 AsciidocFX / conf / fonts 目錄之下，建立子目錄 NotoCJK 。
 
 Step 2: 下載 NotoCJK 字型TTF檔到 AsciidocFX / conf / fonts / NotoCJK 目錄之下。
-      (Noto Sans CJK，Noto Sans Mono CJK，Noto Serif CJK)包含4種樣式(Regular,Italic,Bold,BoldItalic) 共12個ttf檔案。
-      請根據你的語言下載。
-      https://github.com/life888888/cjk-fonts-ttf#download-fonts[下載字型]
-      下載完成的目錄結構會類似上面。NotoCJK 目錄之下會有 NotoSansCJK*.ttf, NotoSansMonoCJK*.ttf, NotoSerifCJK*.ttf 共12個字型檔案。
 
-Step 3: 備份設定檔案 fo-pdf.xsl 及 fop.xconf.xml
-        進入 AsciidocFX / conf / docbook-config 目錄
-        將 fo-pdf.xsl    更名為 fo-pdf.xsl.org.bak
-        將 fop.xconf.xml 更名為 fop.xconf.xml.org.bak
+* (Noto Sans CJK，Noto Sans Mono CJK，Noto Serif CJK)包含4種樣式(Regular,Italic,Bold,BoldItalic) 共12個ttf檔案。
+* 請根據你的語言下載。
+* https://github.com/life888888/cjk-fonts-ttf#download-fonts[下載字型]
+* 下載完成的目錄結構會類似上面。NotoCJK 目錄之下會有 NotoSansCJK*.ttf, NotoSansMonoCJK*.ttf, NotoSerifCJK*.ttf 共12個字型檔案。
 
-Step 4: 複製設定檔 fop.xconf.xml
-        複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fop.xconf.xml
-        到   AsciidocFX / conf / docbook-config 目錄下
+Step 3: 備份設定檔案 fo-pdf.xsl 及 fop.xconf.xml。
+        
+* 進入 AsciidocFX / conf / docbook-config 目錄
+* 將 fo-pdf.xsl    更名為 fo-pdf.xsl.org.bak
+* 將 fop.xconf.xml 更名為 fop.xconf.xml.org.bak
 
-Step 5: 複製設定檔 fo-pdf.xsl.xx
-        複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fo-pdf.xsl.tc
-        到   AsciidocFX / conf / docbook-config 目錄下
-        並且更名為 fo-pdf.xsl
+Step 4: 複製設定檔 fop.xconf.xml。
+        
+* 複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fop.xconf.xml
+* 到   AsciidocFX / conf / docbook-config 目錄下
+
+Step 5: 複製設定檔 fo-pdf.xsl.xx。
+        
+* 複製 AsciidocFX / asciidocfx-pdf-fop-cjk-patch-0.0.1 / fo-pdf.xsl.tc
+* 到   AsciidocFX / conf / docbook-config 目錄下
+* 並且更名為 fo-pdf.xsl
 
 [IMPORTANT] 
 .注意上述說明的 `xx` 請換成對應你要使用的語言代碼。
