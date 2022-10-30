@@ -180,7 +180,7 @@ Step 6: 刪除安裝目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1。
 
 === 修改的檔案內容
 
-[,xml,linenums,highlight=87]
+[%linenums,xml,linenums,highlight=87]
 .fop.xconf.xml
 ----
 <?xml version="1.0"?>
