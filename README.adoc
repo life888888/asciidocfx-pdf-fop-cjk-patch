@@ -180,7 +180,7 @@ Step 6: 刪除安裝目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1。
 
 **AsciidocFX / conf / docbook-config / fop.xconf.xml**
 
-修改內容
+修改內容, 加入 `<directory recursive="true">conf/fonts/NotoCJK</directory>`
 
 [source,xml,linenums,highlight=4]
 .fop.xconf.xml
@@ -199,7 +199,9 @@ Step 6: 刪除安裝目錄 asciidocfx-pdf-fop-cjk-patch-0.0.1。
 
 **AsciidocFX / conf / docbook-config / fo-pdf.xsl**
 
-修改內容
+修改內容, 加入 `Noto Sans CJK TC` , `Noto Sans Mono CJK TC`, `Noto Serif CJK TC`
+
+**TC** 請換成你自己的語言，例如：**JP** ,  `Noto Sans CJK JP` , `Noto Sans Mono CJK JP`, `Noto Serif CJK JP`
 
 [source,xml,linenums,highlight=6,11,20,24,28,36]
 .fo-pdf.xsl
